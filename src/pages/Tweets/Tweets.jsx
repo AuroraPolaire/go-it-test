@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  selectFollowingList,
-  selectNumberOfUsers,
-  selectUsers,
+  selectFilteredUsers,
+  selectSelectedOption,
 } from "../../redux/usersSelector";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import UserCard from "../../components/UserCard/UserCard";
-import { getUsers } from "../../redux/usersOperations";
 import {
   ButtonContainer,
   CardsContainer,
@@ -15,60 +13,23 @@ import {
 } from "./Tweets.styled";
 import { Link, useLocation } from "react-router-dom";
 import MySelect from "../../components/Select/Select";
+import { useLoadMore } from "../../hooks/useLoadMore";
 
 const Tweets = () => {
-  const dispatch = useDispatch();
-
   const location = useLocation();
   const backLink = location.state?.from ?? "/";
 
-  const usersNumber = useSelector(selectNumberOfUsers);
-  const amountOfPages = Math.ceil(usersNumber / 3);
+  const filteredUsersList = useSelector(selectFilteredUsers);
+  const selectedOption = useSelector(selectSelectedOption);
 
-  const usersList = useSelector(selectUsers);
-  const following = useSelector(selectFollowingList);
-
-  const [page, setPage] = useState(1);
-  const [prevPage, setPrevPage] = useState(page);
-  const [selectedOption, setSelectedOption] = useState("showAll");
-  const [filteredUsers, setFilteredUsers] = useState(usersList ?? []);
-
-  useEffect(() => {
-    if (!usersList || usersList.length === 0) {
-      dispatch(getUsers(page));
-    }
-  }, [page, dispatch, usersList]);
-
-  useEffect(() => {
-    setPrevPage(page);
-  }, [page]);
-
-  useEffect(() => {
-    if (prevPage !== page) dispatch(getUsers(page));
-  }, [page, prevPage, dispatch]);
-
-  useEffect(() => {
-    if (selectedOption === "showAll") setFilteredUsers(usersList);
-    if (selectedOption === "follow")
-      setFilteredUsers(
-        usersList.filter((user) => {
-          return !following.includes(user.id);
-        })
-      );
-    if (selectedOption === "followings")
-      setFilteredUsers(
-        usersList.filter((user) => {
-          return following.includes(user.id);
-        })
-      );
-  }, [following, selectedOption, usersList]);
+  const { users, loadMore, isMore } = useLoadMore({
+    initialPage: 1,
+    usersList: filteredUsersList,
+    itemsPerLoad: 3,
+  });
 
   const handleClick = () => {
-    setPage(page + 1);
-  };
-
-  const blockLoadMore = () => {
-    if (usersList.length === usersNumber) return true;
+    loadMore();
   };
 
   return (
@@ -77,16 +38,13 @@ const Tweets = () => {
         <StyledButton type="button">Back</StyledButton>
       </Link>
       <Filter>Filter tweets:</Filter>
-      <MySelect
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
-      />
+      <MySelect selectedOption={selectedOption} />
       <CardsContainer>
-        {filteredUsers.map((userData) => (
+        {users.map((userData) => (
           <UserCard key={userData.id} userData={userData} />
         ))}
       </CardsContainer>
-      {page < amountOfPages && !blockLoadMore() && (
+      {isMore && (
         <ButtonContainer>
           <StyledButton type="button" onClick={handleClick} kind="loadMore">
             Load more

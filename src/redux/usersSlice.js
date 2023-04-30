@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { updateUser, getUsers, getUsersNumber } from "./usersOperations";
+import { updateUser, getUsers } from "./usersOperations";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -9,14 +9,15 @@ const usersSlice = createSlice({
     usersNumber: 0,
     allUsers: [],
     following: [],
+    selectedOption: "showAll",
     isLoading: false,
     error: null,
-    shouldScroll: false,
   },
   reducers: {
-    scrollToBottom: (state) => {
-      state.shouldScroll = true;
+    setSelectedOption: (state, { payload }) => {
+      state.selectedOption = payload;
     },
+
     followUser(state, action) {
       state.following.push(action.payload);
       const index = state.allUsers.findIndex(
@@ -35,33 +36,14 @@ const usersSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(getUsersNumber.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getUsersNumber.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.usersNumber = payload;
-      })
-      .addCase(getUsersNumber.rejected, (state) => {
-        state.isLoading = false;
-        state.error = true;
-      })
       .addCase(getUsers.pending, (state) => {
         state.isLoading = true;
         state.shouldScroll = false;
       })
       .addCase(getUsers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.allUsers = [...state.allUsers, ...payload];
-        if (state.shouldScroll) {
-          //   // setTimeout(() => {
-          window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth",
-          });
-        }
-        // }, 100);
-        state.shouldScroll = false;
+        state.allUsers = payload;
+        state.usersNumber = payload.length;
       })
       .addCase(getUsers.rejected, (state) => {
         state.isLoading = false;
@@ -82,11 +64,11 @@ const usersSlice = createSlice({
 const persistConfig = {
   key: "users",
   storage,
-  whitelist: ["following"],
+  whitelist: ["following", "allusers"],
 };
 
 export const {
-  scrollToBottom,
+  setSelectedOption,
   followUser,
   unfollowUser,
   showAll,

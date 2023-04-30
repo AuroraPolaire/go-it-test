@@ -1,4 +1,6 @@
 import Select from "react-select";
+import { useDispatch } from "react-redux";
+import { setSelectedOption } from "../../redux/usersSlice";
 
 const customStyles = {
   option: (styles, { isHovered, isSelected }) => {
@@ -39,11 +41,12 @@ const options = [
   { value: "followings", label: "Followings" },
 ];
 
-function MySelect({ selectedOption, setSelectedOption }) {
+function MySelect({ selectedOption }) {
+  const dispatch = useDispatch();
   return (
     <Select
       defaultValue={selectedOption}
-      onChange={(e) => setSelectedOption(e.value)}
+      onChange={(e) => dispatch(setSelectedOption(e.value))}
       options={options}
       styles={customStyles}
     />

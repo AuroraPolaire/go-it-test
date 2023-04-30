@@ -10,13 +10,13 @@ import { GlobalStyles } from "./globalStyles/GlobalStyles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}></PersistGate>
-    <GlobalStyles />
-    <BrowserRouter basename="/go-it-test">
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}></PersistGate>
+      <GlobalStyles />
+      <BrowserRouter basename="/go-it-test">
         <App />
-    </BrowserRouter>
-  </Provider>
-  // </React.StrictMode>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
