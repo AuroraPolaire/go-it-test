@@ -1,8 +1,5 @@
-import React from "react";
-import {
-  selectFilteredUsers,
-  selectSelectedOption,
-} from "../../redux/usersSelector";
+import React, { useRef } from "react";
+import { selectFilteredUsers } from "../../redux/usersSelector";
 import { useSelector } from "react-redux";
 import UserCard from "../../components/UserCard/UserCard";
 import {
@@ -19,8 +16,9 @@ const Tweets = () => {
   const location = useLocation();
   const backLink = location.state?.from ?? "/";
 
+  const cardsContainerRef = useRef(null);
+
   const filteredUsersList = useSelector(selectFilteredUsers);
-  const selectedOption = useSelector(selectSelectedOption);
 
   const { users, loadMore, isMore } = useLoadMore({
     initialPage: 1,
@@ -30,6 +28,15 @@ const Tweets = () => {
 
   const handleClick = () => {
     loadMore();
+    const container = cardsContainerRef.current;
+    if (container) {
+      container.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+        offsetTop: 50,
+      });
+    }
   };
 
   return (
@@ -39,7 +46,7 @@ const Tweets = () => {
       </Link>
       <Filter>Filter tweets:</Filter>
       <MySelect />
-      <CardsContainer>
+      <CardsContainer ref={cardsContainerRef}>
         {users.map((userData) => (
           <UserCard key={userData.id} userData={userData} />
         ))}

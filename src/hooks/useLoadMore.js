@@ -10,10 +10,6 @@ export const useLoadMore = ({ usersList, itemsPerLoad, initialPage }) => {
 
   const loadMore = () => {
     setPage(page + 1);
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
   };
 
   const isMore = page * itemsPerLoad < usersList.length;
