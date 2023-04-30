@@ -38,7 +38,7 @@ const Tweets = () => {
         <StyledButton type="button">Back</StyledButton>
       </Link>
       <Filter>Filter tweets:</Filter>
-      <MySelect selectedOption={selectedOption} />
+      <MySelect />
       <CardsContainer>
         {users.map((userData) => (
           <UserCard key={userData.id} userData={userData} />

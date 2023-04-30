@@ -41,11 +41,13 @@ const options = [
   { value: "followings", label: "Followings" },
 ];
 
-function MySelect({ selectedOption }) {
+const defaultOption = { value: "showAll", label: "Show all" };
+
+function MySelect() {
   const dispatch = useDispatch();
   return (
     <Select
-      defaultValue={selectedOption}
+      defaultValue={defaultOption}
       onChange={(e) => dispatch(setSelectedOption(e.value))}
       options={options}
       styles={customStyles}
