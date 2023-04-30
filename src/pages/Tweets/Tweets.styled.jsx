@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Filter = styled.h2`
+  font-size: 20px;
+  padding: 20px 20px;
+`;
+
 export const ButtonContainer = styled.div`
   text-align: center;
 `;

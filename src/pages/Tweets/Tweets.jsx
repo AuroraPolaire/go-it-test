@@ -7,7 +7,12 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import UserCard from "../../components/UserCard/UserCard";
 import { getUsers } from "../../redux/usersOperations";
-import { ButtonContainer, CardsContainer, StyledButton } from "./Tweets.styled";
+import {
+  ButtonContainer,
+  CardsContainer,
+  Filter,
+  StyledButton,
+} from "./Tweets.styled";
 import { Link, useLocation } from "react-router-dom";
 import MySelect from "../../components/Select/Select";
 
@@ -62,16 +67,16 @@ const Tweets = () => {
     setPage(page + 1);
   };
 
-  // const blockLoadMore = () => {
-  //   if (selectedOption === "follow" || selectedOption === "followings")
-  //     return true;
-  // };
+  const blockLoadMore = () => {
+    if (usersList.length === usersNumber) return true;
+  };
 
   return (
     <>
       <Link to={backLink}>
         <StyledButton type="button">Back</StyledButton>
       </Link>
+      <Filter>Filter tweets:</Filter>
       <MySelect
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
@@ -81,7 +86,7 @@ const Tweets = () => {
           <UserCard key={userData.id} userData={userData} />
         ))}
       </CardsContainer>
-      {page < amountOfPages && (
+      {page < amountOfPages && !blockLoadMore() && (
         <ButtonContainer>
           <StyledButton type="button" onClick={handleClick} kind="loadMore">
             Load more

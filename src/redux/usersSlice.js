@@ -19,7 +19,9 @@ const usersSlice = createSlice({
     },
     followUser(state, action) {
       state.following.push(action.payload);
-      const index = state.allUsers.findIndex((user) => user.id === action.payload);
+      const index = state.allUsers.findIndex(
+        (user) => user.id === action.payload
+      );
       state.allUsers[index].followers += 1;
     },
     unfollowUser(state, { payload }) {
@@ -52,14 +54,14 @@ const usersSlice = createSlice({
         state.isLoading = false;
         state.allUsers = [...state.allUsers, ...payload];
         if (state.shouldScroll) {
-          setTimeout(() => {
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
-          }, 100);
-          state.shouldScroll = false;
+          //   // setTimeout(() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth",
+          });
         }
+        // }, 100);
+        state.shouldScroll = false;
       })
       .addCase(getUsers.rejected, (state) => {
         state.isLoading = false;
@@ -80,7 +82,7 @@ const usersSlice = createSlice({
 const persistConfig = {
   key: "users",
   storage,
-  whitelist: ["following", "allUsers"],
+  whitelist: ["following"],
 };
 
 export const {
