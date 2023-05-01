@@ -39,7 +39,7 @@ const UserCard = ({ userData }) => {
         <div class="hover-tooltip">
           <div className="pseudo-elements">
             <img src={avatar} alt={user} />
-            <span class="tooltip">{user}</span>
+            <span className="tooltip">{user}</span>
           </div>
         </div>
         <ul>
