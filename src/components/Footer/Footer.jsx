@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Wrapper } from "../../globalStyles/GlobalContainer";
 import { StyledFooter } from "./Footer.styled";
 
@@ -7,7 +8,9 @@ const Footer = () => {
     <StyledFooter>
       <Wrapper>
         <div className="footer-flex">
-          <p className="logo">TweetsNet</p>
+          <Link to="/">
+            <p className="logo">TweetsNet</p>
+          </Link>
           <p className="rights"> &copy; All rights reserved</p>
         </div>
       </Wrapper>

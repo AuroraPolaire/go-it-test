@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { selectFilteredUsers } from "../../redux/usersSelector";
 import { useSelector } from "react-redux";
 import UserCard from "../../components/UserCard/UserCard";
@@ -11,12 +11,14 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import MySelect from "../../components/Select/Select";
 import { useLoadMore } from "../../hooks/useLoadMore";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Tweets = () => {
   const location = useLocation();
   const backLink = location.state?.from ?? "/";
 
-  const cardsContainerRef = useRef(null);
+  const [scrollTimeoutId, setScrollTimeoutId] = useState(null);
 
   const filteredUsersList = useSelector(selectFilteredUsers);
 
@@ -26,17 +28,20 @@ const Tweets = () => {
     itemsPerLoad: 3,
   });
 
+  useEffect(() => {
+    return () => {
+      clearTimeout(scrollTimeoutId);
+    };
+  }, [scrollTimeoutId]);
+
   const handleClick = () => {
     loadMore();
-    const container = cardsContainerRef.current;
-    if (container) {
-      container.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-        offsetTop: 50,
-      });
-    }
+
+    const scrollTimeout = setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
+
+    setScrollTimeoutId(scrollTimeout);
   };
 
   return (
@@ -46,7 +51,7 @@ const Tweets = () => {
       </Link>
       <Filter>Filter tweets:</Filter>
       <MySelect />
-      <CardsContainer ref={cardsContainerRef}>
+      <CardsContainer>
         {users.map((userData) => (
           <UserCard key={userData.id} userData={userData} />
         ))}

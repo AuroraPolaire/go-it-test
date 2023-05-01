@@ -1,25 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  // fetchUserQauntity,
-  fetchUsers,
-  updateUserApi,
-} from "../services/usersApi";
-// import { scrollToBottom } from "./usersSlice";
+import { fetchUsers, updateUserApi } from "../services/usersApi";
 
-export const getUsers = createAsyncThunk(
-  "fetch/users",
-  async (_, { dispatch }) => {
-    try {
-      const users = await fetchUsers();
-      // const isUserAtBottom =
-      //   window.innerHeight + window.pageYOffset >= document.body.scrollHeight;
-      // dispatch(scrollToBottom(isUserAtBottom));
-      return users;
-    } catch (error) {
-      // return thunkAPI.rejectWithValue(error.message);
-    }
+export const getUsers = createAsyncThunk("fetch/users", async (_, thunkAPI) => {
+  try {
+    const users = await fetchUsers();
+    return users;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const updateUser = createAsyncThunk(
   "follow/user",

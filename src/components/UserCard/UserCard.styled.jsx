@@ -100,11 +100,15 @@ export const CardContainer = styled.div`
       width: 350px;
       left: -144px;
     }
+
+    @media screen and (min-width: 1280px) {
+      width: 380px;
+      left: -159px;
+    }
   }
 
   & img {
     position: relative;
-    /* margin-top: 100px; */
     width: 62px;
     border-radius: 50%;
     filter: drop-shadow(0 -0.5mm 0.5mm rgba(174, 123, 227, 1));
