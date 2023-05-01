@@ -3,12 +3,6 @@ import styled from "styled-components";
 import background1x from "../../images/bg1x.webp";
 import background2x from "../../images/bg2x.webp";
 
-export const UserName = styled.h2`
-  font-size: 28px;
-  text-align: center;
-  margin: 20px 0;
-`;
-
 export const CardContainer = styled.div`
   position: relative;
   display: flex;
@@ -25,8 +19,6 @@ export const CardContainer = styled.div`
   background-size: 308px 168px, cover;
   background-position: 36px 28px, center;
   background-repeat: no-repeat, no-repeat;
-  transition: scale var(--transition-dur-and-func);
-  transform: scale();
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -42,10 +34,6 @@ export const CardContainer = styled.div`
   @media screen and (min-width: 1280px) {
     width: 380px;
     height: 460px;
-  }
-
-  &:hover {
-    scale: 1.01;
   }
 
   & svg {
@@ -112,6 +100,23 @@ export const CardContainer = styled.div`
     width: 62px;
     border-radius: 50%;
     filter: drop-shadow(0 -0.5mm 0.5mm rgba(174, 123, 227, 1));
+  }
+
+  .tooltip {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 160px;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    background-color: #f4f4f4df;
+    border-radius: 10px;
+    padding: 8px;
+  }
+
+  .hover-tooltip:hover .tooltip {
+    visibility: visible;
   }
 
   & ul {

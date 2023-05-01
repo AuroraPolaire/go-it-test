@@ -3,7 +3,7 @@ import { followUser, unfollowUser } from "../../redux/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFollowingList } from "../../redux/usersSelector";
 import { updateUser } from "../../redux/usersOperations";
-import { CardContainer, UserName } from "./UserCard.styled";
+import { CardContainer } from "./UserCard.styled";
 import SVG from "../../images/sprite.svg";
 
 const UserCard = ({ userData }) => {
@@ -31,14 +31,16 @@ const UserCard = ({ userData }) => {
 
   return (
     <div>
-      <UserName>{user}</UserName>
       <CardContainer>
         <svg>
           <use href={`${SVG}#icon-Logo`}></use>
         </svg>
 
         <div className="pseudo-elements">
-          <img src={avatar} alt={user} />
+          <div class="hover-tooltip">
+            <img src={avatar} alt={user} />
+            <span class="tooltip">{user}</span>
+          </div>
         </div>
         <ul>
           <li>{tweets} tweets</li>
