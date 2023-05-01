@@ -1,4 +1,4 @@
-# GoIt test task.
+# GoIt test task: 'TweetsNet'
 
 # Stack of technologies: 
 
