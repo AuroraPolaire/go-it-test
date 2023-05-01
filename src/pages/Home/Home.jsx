@@ -1,15 +1,26 @@
 import React from "react";
+import { FcCheckmark } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { HomeContainer } from "./Home.styled";
 
 const Home = () => {
+  const iconStyle = { marginRight: "8px" };
   return (
     <HomeContainer>
       <h1>Welcome to TweetsNet !</h1>
       <ul>
-        <li>Search and follow interesting people.</li>
-        <li>Filter users.</li>
-        <li>More features to come!</li>
+        <li>
+          <FcCheckmark style={iconStyle} />
+          Search and follow interesting people.
+        </li>
+        <li>
+          <FcCheckmark style={iconStyle} />
+          Filter users.
+        </li>
+        <li>
+          <FcCheckmark style={iconStyle} />
+          More features to come!
+        </li>
       </ul>
       <Link to="/tweets">
         <div className="button-box">

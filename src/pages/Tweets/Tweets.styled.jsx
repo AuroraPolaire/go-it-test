@@ -19,7 +19,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  /* position: relative; */
+  display: flex;
+  align-items: center;
   margin: 20px 0 20px;
   padding: 10px 20px;
   font-weight: 400;
@@ -34,6 +35,11 @@ export const StyledButton = styled.button`
   :hover {
     background-color: #ffe066;
     cursor: pointer;
+  }
+
+  & .back-icon {
+    margin-right: 8px;
+    color: black;
   }
 `;
 

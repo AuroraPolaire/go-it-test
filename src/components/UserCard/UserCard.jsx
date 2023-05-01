@@ -10,13 +10,13 @@ import Loader from "../Loader/Loader";
 import { useState } from "react";
 
 const UserCard = ({ userData }) => {
+  const dispatch = useDispatch();
   const { user, tweets, followers, avatar, id } = userData;
   const [isLoading, setIsLoading] = useState(false);
 
   const followedUser = { user, tweets, followers: followers + 1, avatar, id };
   const unfollowedUser = { user, tweets, followers: followers - 1, avatar, id };
 
-  const dispatch = useDispatch();
   const followingList = useSelector(selectFollowingList);
 
   const isFollowing = (id) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { selectFilteredUsers } from "../../redux/usersSelector";
 import { useSelector } from "react-redux";
 import UserCard from "../../components/UserCard/UserCard";
@@ -11,8 +11,8 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import MySelect from "../../components/Select/Select";
 import { useLoadMore } from "../../hooks/useLoadMore";
-import { useEffect } from "react";
-import { useState } from "react";
+
+import { FiArrowLeftCircle } from "react-icons/fi";
 
 const Tweets = () => {
   const location = useLocation();
@@ -47,7 +47,10 @@ const Tweets = () => {
   return (
     <>
       <Link to={backLink}>
-        <StyledButton type="button">Back</StyledButton>
+        <StyledButton type="button">
+          <FiArrowLeftCircle className="back-icon" />
+          Back
+        </StyledButton>
       </Link>
       <Filter>Filter tweets:</Filter>
       <MySelect />
