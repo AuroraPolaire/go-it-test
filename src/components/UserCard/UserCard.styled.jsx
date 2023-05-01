@@ -103,16 +103,29 @@ export const CardContainer = styled.div`
   }
 
   .tooltip {
+    white-space: nowrap;
     visibility: hidden;
     position: absolute;
     z-index: 1;
-    width: 160px;
+    top: -90%;
+    left: -20%;
     color: black;
     font-size: 18px;
     text-align: center;
-    background-color: #f4f4f4df;
+    background-color: #f4f4f4;
     border-radius: 10px;
     padding: 8px;
+  }
+
+  .tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 45%;
+    transform: rotate(45deg);
+    background-color: #f4f4f4;
+    padding: 5px;
+    z-index: 1;
   }
 
   .hover-tooltip:hover .tooltip {
