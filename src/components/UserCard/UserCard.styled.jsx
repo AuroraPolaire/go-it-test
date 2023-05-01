@@ -98,10 +98,13 @@ export const CardContainer = styled.div`
   }
 
   & img {
-    /* position: relative; */
     width: 62px;
     border-radius: 50%;
     filter: drop-shadow(0 -0.5mm 0.5mm rgba(174, 123, 227, 1));
+  }
+
+  .invisible {
+    padding: 0;
   }
 
   .tooltip {
@@ -153,6 +156,7 @@ export const CardContainer = styled.div`
   }
 
   button {
+    position: relative;
     padding: 14px 56px;
     font-weight: 600;
     font-size: 18px;
@@ -180,5 +184,15 @@ export const CardContainer = styled.div`
 
   .following:hover {
     background-color: #ebd8ff;
+  }
+
+  .loader {
+    position: absolute;
+    top: -10px;
+    left: -60px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 0px;
+    transition: all var(--transition-dur-and-func);
   }
 `;

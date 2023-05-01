@@ -6,8 +6,12 @@ import { updateUser } from "../../redux/usersOperations";
 import { CardContainer } from "./UserCard.styled";
 import SVG from "../../images/sprite.svg";
 
+import Loader from "../Loader/Loader";
+import { useState } from "react";
+
 const UserCard = ({ userData }) => {
   const { user, tweets, followers, avatar, id } = userData;
+  const [isLoading, setIsLoading] = useState(false);
 
   const followedUser = { user, tweets, followers: followers + 1, avatar, id };
   const unfollowedUser = { user, tweets, followers: followers - 1, avatar, id };
@@ -20,12 +24,17 @@ const UserCard = ({ userData }) => {
   };
 
   const handleClick = (e) => {
+    setIsLoading(true);
     if (isFollowing(id)) {
       dispatch(unfollowUser(id));
-      dispatch(updateUser({ userData: unfollowedUser, id }));
+      dispatch(updateUser({ userData: unfollowedUser, id })).then(() =>
+        setIsLoading(false)
+      );
     } else {
       dispatch(followUser(id));
-      dispatch(updateUser({ userData: followedUser, id }));
+      dispatch(updateUser({ userData: followedUser, id })).then(() =>
+        setIsLoading(false)
+      );
     }
   };
 
@@ -49,10 +58,12 @@ const UserCard = ({ userData }) => {
 
         <button
           type="button"
-          className={isFollowing(id) ? "following" : "not-following"}
+          className={`${isFollowing(id) ? "following" : "not-following"} ${
+            isLoading ? "invisible" : "visible"
+          }`}
           onClick={handleClick}
         >
-          {isFollowing(id) ? "Following" : "Follow"}
+          {isLoading ? <Loader /> : isFollowing(id) ? "Following" : "Follow"}
         </button>
       </CardContainer>
     </div>

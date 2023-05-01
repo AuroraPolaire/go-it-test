@@ -19,6 +19,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
+  /* position: relative; */
   margin: 20px 0 20px;
   padding: 10px 20px;
   font-weight: 400;
