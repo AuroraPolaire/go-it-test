@@ -96,7 +96,7 @@ export const CardContainer = styled.div`
   }
 
   & img {
-    position: relative;
+    /* position: relative; */
     width: 62px;
     border-radius: 50%;
     filter: drop-shadow(0 -0.5mm 0.5mm rgba(174, 123, 227, 1));
@@ -108,7 +108,8 @@ export const CardContainer = styled.div`
     position: absolute;
     z-index: 1;
     top: -90%;
-    left: -20%;
+    left: 50%;
+    transform: translateX(-50%);
     color: black;
     font-size: 18px;
     text-align: center;
