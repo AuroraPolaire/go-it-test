@@ -12,7 +12,9 @@ const Home = () => {
         <li>More features to come!</li>
       </ul>
       <Link to="/tweets">
-        <button type="button">See users</button>
+        <div className="button-box">
+          <button type="button">See users</button>
+        </div>
       </Link>
     </HomeContainer>
   );

@@ -12,6 +12,10 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 80px;
+    gap: 40px;
+
+    @media screen and (min-width: 768px) {
+      gap: 80px;
+    }
   }
 `;

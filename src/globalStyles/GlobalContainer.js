@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 0 16px;
-  @media screen and (min-width: 375px) {
-    width: 375px;
+  @media screen and (min-width: 320px) {
+    padding: 0 16px;
+    width: 320px;
     margin-left: auto;
     margin-right: auto;
   }

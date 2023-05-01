@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 380px;
+  width: 320px;
   height: 460px;
 
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
@@ -17,7 +17,7 @@ export const CardContainer = styled.div`
   background-image: url(${background1x}),
     linear-gradient(114.99deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
   background-size: 308px 168px, cover;
-  background-position: 36px 28px, center;
+  background-position: 5px 28px, center;
   background-repeat: no-repeat, no-repeat;
 
   @media (min-device-pixel-ratio: 2),
@@ -28,12 +28,14 @@ export const CardContainer = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    margin-top: 15px;
     width: 350px;
-    height: 460px;
+    background-position: 20px 28px, center;
   }
+
   @media screen and (min-width: 1280px) {
     width: 380px;
-    height: 460px;
+    background-position: 36px 28px, center;
   }
 
   & svg {
@@ -72,10 +74,10 @@ export const CardContainer = styled.div`
 
   .pseudo-elements::before {
     position: absolute;
-    width: 380px;
+    width: 320px;
     height: 8px;
     top: 30px;
-    left: -159px;
+    left: -129px;
     background: #ebd8ff;
     content: "";
     z-index: -1;

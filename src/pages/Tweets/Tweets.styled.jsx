@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
 export const Filter = styled.h2`
-  font-size: 20px;
-  padding: 20px 20px;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-size: 20px;
+    padding: 0px 20px 15px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 5px 20px 20px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -10,7 +19,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  margin: 30px 0 20px;
+  margin: 20px 0 20px;
   padding: 10px 20px;
   font-weight: 400;
   font-size: 16px;
