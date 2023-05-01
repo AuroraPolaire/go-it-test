@@ -36,7 +36,7 @@ const UserCard = ({ userData }) => {
           <use href={`${SVG}#icon-Logo`}></use>
         </svg>
 
-        <div class="hover-tooltip">
+        <div className="hover-tooltip">
           <div className="pseudo-elements">
             <img src={avatar} alt={user} />
             <span className="tooltip">{user}</span>
