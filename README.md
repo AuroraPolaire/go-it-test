@@ -2,7 +2,7 @@
 
 -React; 
 -React-router-dom; 
--Redax Toolkit; 
+-Redux Toolkit; 
 -Redux-persist; 
 -Axios; 
 -React-select; 
