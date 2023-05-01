@@ -15,7 +15,9 @@ export const Filter = styled.h2`
 `;
 
 export const ButtonContainer = styled.div`
-  text-align: center;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const StyledButton = styled.button`
