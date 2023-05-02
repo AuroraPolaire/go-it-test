@@ -3,6 +3,11 @@
 Website gives abilites to follow and unfollow users, loaded on click.
 Filter sorts users according to chosen type.
 
+## Demo
+
+Link to demo
+https://aurorapolaire.github.io/go-it-test/
+
 ## Screenshots
 
 ![Home Page](https://i.ibb.co/0qyxHY6/tweetNet.png)
@@ -16,4 +21,6 @@ Filter sorts users according to chosen type.
 4. Redux-persist.
 5. Axios.
 6. React-select.
-7. Styled-components.
+7. React-loader-spinner.
+8. React-icons.
+9. Styled-components.
