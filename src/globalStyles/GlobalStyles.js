@@ -48,4 +48,8 @@ html {
 div {
   box-sizing: border-box;
 }
+
+button {
+  cursor: pointer;
+}
 `;
