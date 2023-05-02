@@ -5,8 +5,8 @@ Filter sorts users according to chosen type.
 
 ## Screenshots
 
-![Home Page](https://ibb.co/Q9v4yYT)
-![Tweet Page](https://ibb.co/fNdK730)
+![Home Page](https://i.ibb.co/0qyxHY6/tweetNet.png)
+![Tweet Page](https://i.ibb.co/HPTMQcg/tweet-Net1.png)
 
 ## Features
 
