@@ -1,7 +1,10 @@
 # Test App 'TweetsNet'
 
-Website gives abilites to follow and unfollow users, loaded on click.
-Filter sorts users according to chosen type.
+- App has routing : home page and tweets page.
+- Tweets page gives abilites to load users on click ( + scroll to loaded users).
+- You can follow and unfollow users, data is sent to the server, and changed on the front.
+- Filter sorts users according to chosen type (all, follow, following).
+- Back button redirects to main page.
 
 ## Demo
 
