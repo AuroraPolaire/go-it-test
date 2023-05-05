@@ -6,6 +6,7 @@ const customStyles = {
   option: (styles, { isHovered, isSelected }) => {
     return {
       ...styles,
+      cursor: "pointer",
       fontSize: "20px",
       color: "black",
       backgroundColor: isSelected ? "#4b2a9982" : "white",
@@ -20,6 +21,7 @@ const customStyles = {
   },
   control: (styles, { isChosen, isFocused, isHovered, isSelected }) => ({
     ...styles,
+    cursor: "pointer",
     fontSize: "20px",
     padding: "10px",
     marginBottom: "30px",
